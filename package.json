@@ -1,7 +1,7 @@
 {
-  "name": "capacitor-file-picker",
-  "version": "1.0.6",
-  "description": "This plugin presents the native UI for picking a file.",
+  "name": "filepicker-new",
+  "version": "1.0.1",
+  "description": "Plugin to pick files/images/videos from android or ios.",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "scripts": {
@@ -10,7 +10,7 @@
     "watch": "tsc --watch",
     "prepublishOnly": "npm run build"
   },
-  "author": "Jose Martinez",
+  "author": "Devmantosh",
   "license": "MIT",
   "dependencies": {
     "@capacitor/core": "^3.0.2"
@@ -42,9 +42,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/epicshaggy/capaitor-file-picker"
+    "url": "https://github.com/mantosh59/capacitor-file-picker"
   },
   "bugs": {
-    "url": "https://github.com/epicshaggy/capaitor-file-picker/issues"
+    "url": "https://github.com/mantosh59/capaitor-file-picker/issues"
   }
 }
