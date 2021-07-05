@@ -1,0 +1,51 @@
+{
+  "name": "capacitor-file-picker",
+  "version": "1.0.0",
+  "description": "This plugin presents the native UI for picking a file.",
+  "main": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rimraf ./dist",
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "Jose Martinez",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/core": "^3.0.2"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^3.0.2",
+    "@capacitor/ios": "^3.0.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.3.5"
+  },
+  "files": [
+    "dist/",
+    "ios/",
+    "android/",
+    "CapacitorFilePicker.podspec"
+  ],
+  "keywords": [
+    "capacitor",
+    "plugin",
+    "native"
+  ],
+  "capacitor": {
+    "ios": {
+      "src": "ios"
+    },
+    "android": {
+      "src": "android"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xelits/capacitor-file-picker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xelits/capacitor-file-picker/issues"
+  },
+  "homepage": "https://github.com/xelits/capacitor-file-picker#readme"
+}
