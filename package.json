@@ -1,32 +1,50 @@
 {
-  "name": "filpicker-updated",
-  "version": "1.0.1",
-  "description": "Plugin to pick files/images/videos from android or ios",
-  "main": "rollup.config.js",
-  "dependencies": {},
+  "name": "capacitor-file-picker",
+  "version": "1.0.6",
+  "description": "This plugin presents the native UI for picking a file.",
+  "main": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rimraf ./dist",
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "Jose Martinez",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/core": "^3.0.2"
+  },
   "devDependencies": {
     "@capacitor/android": "^3.0.2",
     "@capacitor/ios": "^3.0.2",
-    "rimraf": "^3.0.2",
+    "rimraf": "^3.0.0",
     "typescript": "^4.3.5"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "files": [
+    "dist/",
+    "ios/",
+    "android/",
+    "CapacitorFilePicker.podspec"
+  ],
+  "keywords": [
+    "capacitor",
+    "plugin",
+    "native"
+  ],
+  "capacitor": {
+    "ios": {
+      "src": "ios"
+    },
+    "android": {
+      "src": "android"
+    }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mantosh59/capacitor-file-picker.git"
+    "url": "https://github.com/epicshaggy/capaitor-file-picker"
   },
-  "keywords": [
-    "file-picker"
-  ],
-  "author": "devmantosh",
-  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mantosh59/capacitor-file-picker/issues"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "homepage": "https://github.com/mantosh59/capacitor-file-picker#readme"
+    "url": "https://github.com/epicshaggy/capaitor-file-picker/issues"
+  }
 }
