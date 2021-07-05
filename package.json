@@ -1,6 +1,6 @@
 {
   "name": "filepicker-updated",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "description": "Plugin to pick files/images/videos from android or ios.",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
