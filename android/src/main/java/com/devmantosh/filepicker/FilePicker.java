@@ -9,6 +9,8 @@ import android.provider.OpenableColumns;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 
+import androidx.activity.result.ActivityResult;
+
 import com.devmantosh.filepicker.capacitorfilepicker.R;
 import com.getcapacitor.JSArray;
 import com.getcapacitor.JSObject;
@@ -44,12 +46,12 @@ public class FilePicker extends Plugin {
     }
 
     @ActivityCallback
-    private void filePickerResult(PluginCall call, Instrumentation.ActivityResult result) {
+    private void filePickerResult(PluginCall call, ActivityResult result) {
 
         switch (result.getResultCode()) {
             case Activity.RESULT_OK:
-                if (result.getResultData() != null && result.getResultData().getData() != null) {
-                    Intent data = result.getResultData();
+                if (result.getData() != null && result.getData().getData() != null) {
+                    Intent data = result.getData();
 
                     String mimeType = getContext().getContentResolver().getType(data.getData());
                     String extension = MimeTypeMap.getSingleton().getExtensionFromMimeType(mimeType);

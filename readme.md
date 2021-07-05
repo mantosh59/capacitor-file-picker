@@ -6,10 +6,10 @@ Plugin to pick files/images/videos from android or ios.
 
 ## Installation
 
-- `npm i filpicker-updated`
+- `npm i filepicker-updated`
 ## Usage
 
-import { FilePicker } from "filpicker-updated/dist/esm"; 
+import { FilePicker } from "filepicker-updated"; 
 
 FilePicker.showFilePicker({
   fileTypes: ["image/*", "video/*"],
