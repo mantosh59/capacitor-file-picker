@@ -1,4 +1,4 @@
-package com.xelits.filepicker;
+package com.devmantosh.filepicker;
 
 import android.app.Activity;
 import android.app.Instrumentation;
@@ -9,6 +9,7 @@ import android.provider.OpenableColumns;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 
+import com.devmantosh.filepicker.capacitorfilepicker.R;
 import com.getcapacitor.JSArray;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
@@ -16,7 +17,6 @@ import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.ActivityCallback;
 import com.getcapacitor.annotation.CapacitorPlugin;
-import com.xelits.filepicker.capacitorfilepicker.R;
 
 import org.json.JSONException;
 

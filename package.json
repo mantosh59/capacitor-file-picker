@@ -1,5 +1,5 @@
 {
-  "name": "capacitor-file-picker",
+  "name": "capacitor-picker",
   "version": "1.0.0",
   "description": "This plugin presents the native UI for picking a file.",
   "main": "dist/esm/index.js",
@@ -42,10 +42,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xelits/capacitor-file-picker.git"
+    "url": "git+https://github.com/mantosh59/capacitor-file-picker.git"
   },
   "bugs": {
-    "url": "https://github.com/xelits/capacitor-file-picker/issues"
+    "url": "https://github.com/mantosh59/capacitor-file-picker/issues"
   },
-  "homepage": "https://github.com/xelits/capacitor-file-picker#readme"
+  "homepage": "https://github.com/mantosh59/capacitor-file-picker#readme"
 }
