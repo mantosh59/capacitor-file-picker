@@ -1,14 +1,17 @@
+require 'json'
 
-  Pod::Spec.new do |s|
-    s.name = 'CapacitorFilePicker'
-    s.version = '1.0.0'
-    s.summary = 'This plugin presents the native UI for picking a file.'
-    s.license = 'MIT'
-    s.homepage = 'https://github.com/mantosh59/capacitor-file-picker'
-    s.author = 'Devmantosh'
-    s.source = { :git => 'https://github.com/mantosh59/capacitor-file-picker', :tag => s.version.to_s }
-    s.source_files = 'ios/Plugin/**/*.{swift,h,m,c,cc,mm,cpp}'
-    s.ios.deployment_target  = '12.0'
-    s.dependency 'Capacitor'
-    s.dependency 'CapacitorFilePicker', 'pod.version.number'
-  end
+package = JSON.parse(File.read(File.join(__dir__, 'package.json')))
+
+Pod::Spec.new do |s|
+  s.name = 'CapacitorFilePicker'
+  s.version = package['version']
+  s.summary = package['description']
+  s.license = package['license']
+  s.homepage = package['repository']['url']
+  s.author = package['author']
+  s.source = { :git => package['repository']['url'], :tag => s.version.to_s }
+  s.source_files = 'ios/Plugin/**/*.{swift,h,m,c,cc,mm,cpp}'
+  s.ios.deployment_target  = '12.0'
+  s.dependency 'Capacitor'
+  s.swift_version = '5.1'
+end
