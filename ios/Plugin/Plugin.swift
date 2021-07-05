@@ -243,7 +243,7 @@ public class FilePicker: CAPPlugin {
                                 // Set the delegate
                                 picker.delegate = self
                                 // Present the picker
-                                self.bridge.viewController.present(picker, animated: true)
+                                self.bridge?.viewController?.present(picker, animated: true)
                             }
                             else if(status == PHAuthorizationStatus.notDetermined){
                                 PHPhotoLibrary.requestAuthorization(for: .readWrite) { [unowned self] (status) in
@@ -275,7 +275,7 @@ public class FilePicker: CAPPlugin {
                                     }
                                     alert.addAction(openSettingsAction)
                                     
-                                self.bridge.viewController.present(alert, animated: true, completion: nil)
+                                self.bridge?.viewController?.present(alert, animated: true, completion: nil)
                             }
                         }
                     }
@@ -293,13 +293,13 @@ public class FilePicker: CAPPlugin {
                         }
                     }
                     mediaPicker.sourceType = .photoLibrary
-                    self.bridge.viewController.present(mediaPicker, animated: true, completion: nil)
+                    self.bridge?.viewController?.present(mediaPicker, animated: true, completion: nil)
                 }
             }else{
                 let documentPicker = UIDocumentPickerViewController(documentTypes: types as [String], in: .import)
                 documentPicker.delegate = self
                 documentPicker.allowsMultipleSelection = false
-                self.bridge.viewController.present(documentPicker, animated: true, completion: nil)
+                self.bridge?.viewController?.present(documentPicker, animated: true, completion: nil)
             }
          }
     }
@@ -309,7 +309,7 @@ extension FilePicker: UIDocumentPickerDelegate {
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         let defaults = UserDefaults()
         let id = defaults.string(forKey: "callbackId") ?? ""
-        guard let call = self.bridge.getSavedCall(id) else {
+        guard let call = self.bridge?.savedCall(withID: id) else {
             return
         }
     
@@ -339,7 +339,7 @@ extension FilePicker: UIImagePickerControllerDelegate, UINavigationControllerDel
                                           didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         let defaults = UserDefaults()
         let id = defaults.string(forKey: "callbackId") ?? ""
-        guard let call = self.bridge.getSavedCall(id) else {
+        guard let call = self.bridge?.getSavedCall(id) else {
             return
         }
          
@@ -398,7 +398,7 @@ extension FilePicker: UIImagePickerControllerDelegate, UINavigationControllerDel
     public func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         let defaults = UserDefaults()
         let id = defaults.string(forKey: "callbackId") ?? ""
-        guard let call = self.bridge.getSavedCall(id) else {
+        guard let call = self.bridge?.getSavedCall(id) else {
             return
         }
        
@@ -455,6 +455,6 @@ extension FilePicker: UIImagePickerControllerDelegate, UINavigationControllerDel
             }
         }
         
-        self.bridge.viewController.dismiss(animated: true)
+        self.bridge?.viewController?.dismiss(animated: true)
     }
 } 
