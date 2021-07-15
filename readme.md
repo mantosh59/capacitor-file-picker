@@ -11,6 +11,7 @@ Plugin to pick files/images/videos from android or ios.
 for Capacitor v2
 
 - `npm i capacitor2-fle-picker`
+- https://github.com/mantosh59/capacitor2-file-picker
 ## Usage
 
 import { FilePicker } from "filepicker-updated"; 
