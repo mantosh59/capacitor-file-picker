@@ -35,8 +35,20 @@ public class FilePicker extends Plugin {
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent.setType("*/*");
         try {
-            if (call.getArray("fileTypes").toString().contains("iv") || call.getArray("fileTypes").toString().contains("i") || call.getArray("fileTypes").toString().contains("v")) {
-                intent.putExtra(Intent.EXTRA_MIME_TYPES, new String[]{"video/*", "image/*"});
+            if(call.getArray("fileTypes").length() == 2){
+                if (call.getArray("fileTypes").toString().contains("video") && call.getArray("fileTypes").toString().contains("image")) {
+                    intent.putExtra(Intent.EXTRA_MIME_TYPES, new String[]{"video/*", "image/*"});
+                }else{
+                    intent.putExtra(Intent.EXTRA_MIME_TYPES, new String[]{"*/*"});
+                }
+            }else {
+                if (call.getArray("fileTypes").toString().contains("image")) {
+                    intent.putExtra(Intent.EXTRA_MIME_TYPES, new String[]{"image/*"});
+                } else if (call.getArray("fileTypes").toString().contains("video")) {
+                    intent.putExtra(Intent.EXTRA_MIME_TYPES, new String[]{"video/*"});
+                } else {
+                    intent.putExtra(Intent.EXTRA_MIME_TYPES, new String[]{"*/*"});
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -61,20 +73,24 @@ public class FilePicker extends Plugin {
                     String name = c.getString(c.getColumnIndex(OpenableColumns.DISPLAY_NAME));
                     long size = c.getLong(c.getColumnIndex(OpenableColumns.SIZE));
 
-                    JSObject ret = new JSObject();
-                    try {
-                        String path = copyFileToInternalStorage(data.getData(), getContext().getString(R.string.app_name));
-                        path = path.startsWith("file://") ? path : "file://" + path;
-                        ret.put("uri", path);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        ret.put("uri", "");
-                    }
-                    ret.put("name", name);
-                    ret.put("mimeType", mimeType);
-                    ret.put("extension", extension);
-                    ret.put("size", size);
-                    call.resolve(ret);
+                    if(size > 0){
+                            JSObject ret = new JSObject();
+                            try {
+                                String path = copyFileToInternalStorage(data.getData(), getContext().getString(R.string.app_name));
+                                path = path.startsWith("file://") ? path : "file://" + path;
+                                ret.put("uri", path);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                ret.put("uri", "");
+                            }
+                            ret.put("name", name);
+                            ret.put("mimeType", mimeType);
+                            ret.put("extension", extension);
+                            ret.put("size", size);
+                            call.resolve(ret);
+                        }else{
+                            call.reject("Invalid/Corrupted file selected.");
+                        }
                 }
                 break;
             case Activity.RESULT_CANCELED:
